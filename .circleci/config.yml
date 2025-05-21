@@ -26,7 +26,7 @@ workflows:
           type: approval
           filters:
             branches:
-              only: master
+              only: main
       - publish:
           context: coast
           requires:
@@ -34,7 +34,7 @@ workflows:
             - manual_approval
           filters:
             branches:
-              only: master
+              only: main
 commands:
   configure-npm-publish:
     steps:
