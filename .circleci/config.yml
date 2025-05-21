@@ -24,13 +24,14 @@ workflows:
       - build
       - manual_approval:
           type: approval
+          requires:
+            - build
           filters:
             branches:
               only: main
       - publish:
           context: coast
           requires:
-            - build
             - manual_approval
           filters:
             branches:
