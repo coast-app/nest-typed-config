@@ -1,5 +1,8 @@
 {
   "name": "@coast/nest-typed-config",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "3.0.0",
   "description": "Intuitive, type-safe configuration module for Nest framework",
   "author": "Coast Engineering",
