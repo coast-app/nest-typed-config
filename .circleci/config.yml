@@ -1,5 +1,12 @@
 version: 2.1
 jobs:
+  build:
+    docker:
+      - image: 'cimg/node:20.12.0'
+    steps:
+      - checkout
+      - run: pnpm install
+      - run: pnpm build
   publish:
     docker:
       - image: 'cimg/node:20.12.0'
@@ -20,6 +27,7 @@ workflows:
       - publish:
           context: coast
           requires:
+            - build
             - manual_approval
           filters:
             branches:
