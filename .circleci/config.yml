@@ -5,6 +5,7 @@ jobs:
       - image: 'cimg/node:20.12.0'
     steps:
       - checkout
+      - run: sudo corepack enable
       - run: pnpm install
       - run: pnpm build
   publish:
@@ -12,6 +13,7 @@ jobs:
       - image: 'cimg/node:20.12.0'
     steps:
       - checkout
+      - run: sudo corepack enable
       - run: pnpm install
       - run: pnpm build
       - configure-npm-publish
