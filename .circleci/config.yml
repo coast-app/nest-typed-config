@@ -19,6 +19,7 @@ jobs:
 workflows:
   build_and_publish:
     jobs:
+      - build
       - manual_approval:
           type: approval
           filters:
