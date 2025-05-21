@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  publish:
+    docker:
+      - image: 'cimg/node:20.12.0'
+    steps:
+      - checkout
+      - run: pnpm install
+      - run: pnpm build
+      - configure-npm-publish
+      - run: pnpm publish
+workflows:
+  build_and_publish:
+    jobs:
+      - manual_approval:
+          type: approval
+      - publish:
+          context: coast
+          requires:
+            - manual_approval
+          filters:
+            branches:
+              only: master
+commands:
+  configure-npm-publish:
+    steps:
+      - run:
+          name: Setup NPM
+          command: |
+            npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
