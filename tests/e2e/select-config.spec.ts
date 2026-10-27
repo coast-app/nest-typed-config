@@ -19,10 +19,10 @@ describe('Local toml', () => {
   it(`can only select existing config without 'allowOptional'`, async () => {
     const module = AppModule.withRawModule();
 
-    expect(() => selectConfig(module, class {})).toThrowError(
+    expect(() => selectConfig(module, class {})).toThrow(
       'You can only select config which exists in providers',
     );
-    expect(() => selectConfig({ module: class {} }, class {})).toThrowError(
+    expect(() => selectConfig({ module: class {} }, class {})).toThrow(
       'You can only select config which exists in providers',
     );
   });

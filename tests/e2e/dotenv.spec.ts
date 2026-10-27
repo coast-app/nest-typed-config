@@ -47,9 +47,9 @@ describe('Dotenv loader', () => {
     process.env = {
       MISSING_DOTENV: '1',
     };
-    expect(() => AppModule.withDotenvNoOption()).toThrowError();
-    expect(processExitStub).toBeCalledTimes(1);
-    expect(consoleErrorStub).toBeCalledTimes(1);
+    expect(() => AppModule.withDotenvNoOption()).toThrow();
+    expect(processExitStub).toHaveBeenCalledTimes(1);
+    expect(consoleErrorStub).toHaveBeenCalledTimes(1);
   });
 
   it(`should throw error when expandVariables is true but dotenv-expand is not installed`, async () => {
@@ -62,9 +62,9 @@ describe('Dotenv loader', () => {
         envFilePath: join(__dirname, '../src/.expand.env'),
         expandVariables: true,
       }),
-    ).toThrowError();
-    expect(processExitStub).toBeCalledTimes(1);
-    expect(consoleErrorStub).toBeCalledTimes(1);
+    ).toThrow();
+    expect(processExitStub).toHaveBeenCalledTimes(1);
+    expect(consoleErrorStub).toHaveBeenCalledTimes(1);
   });
 
   it(`should be able to load config from environment variables when option is empty`, async () => {
