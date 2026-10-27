@@ -182,7 +182,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-self-reference.sub.yaml'],
       ),
-    ).toThrowError(
+    ).toThrow(
       'Circular self reference detected: ${database.host} -> ${database.host}',
     );
   });
@@ -196,7 +196,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-circular-between3.sub.yaml'],
       ),
-    ).toThrowError('Maximum call stack size exceeded');
+    ).toThrow('Maximum call stack size exceeded');
   });
 
   it(`should detect complex circular reference between two keys and throw an error on startup `, async () => {
@@ -208,7 +208,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-circular-between2.sub.yaml'],
       ),
-    ).toThrowError('Maximum call stack size exceeded');
+    ).toThrow('Maximum call stack size exceeded');
   });
 
   it('object substitution', async () => {
@@ -220,9 +220,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-reference-object.sub.yaml'],
       ),
-    ).toThrowError(
-      `Environment variable is not set for variable name: 'database'`,
-    );
+    ).toThrow(`Environment variable is not set for variable name: 'database'`);
   });
 
   it('should not attempt substitution if the loader failed', async () => {
@@ -234,7 +232,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-missing.yaml'],
       ),
-    ).toThrowError(`Failed to find configuration file.`);
+    ).toThrow(`Failed to find configuration file.`);
   });
 
   it('array primitives substitution', async () => {
@@ -246,7 +244,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-reference-array-of-primitives.sub.yaml'],
       ),
-    ).toThrowError(
+    ).toThrow(
       `Environment variable is not set for variable name: 'stringArray'`,
     );
   });
@@ -260,7 +258,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-advanced-chain-reference-wrong-value.sub.yaml'],
       ),
-    ).toThrowError(
+    ).toThrow(
       `Environment variable is not set for variable name: 'database.noValue'`,
     );
   });
@@ -274,7 +272,7 @@ describe('Environment variable substitutions error cases', () => {
         ConfigWithAlias,
         ['.env-reference-array-of-objects.sub.yaml'],
       ),
-    ).toThrowError(
+    ).toThrow(
       `Environment variable is not set for variable name: 'objectArray'`,
     );
   });

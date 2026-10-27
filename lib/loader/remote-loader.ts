@@ -107,7 +107,7 @@ export const remoteLoader = <T = any>(
         parseJson = loadPackage(
           'parse-json',
           "remoteLoader's ability to parse JSON files",
-        );
+        ).default;
         return parseJson(content);
       },
       yaml: (content: string) => {

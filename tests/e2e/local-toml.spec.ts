@@ -30,9 +30,9 @@ describe('Local toml', () => {
   it(`should throw error when @iarna/toml is not installed`, async () => {
     process.env = { MISSING_TOML: '1' };
 
-    expect(() => AppModule.withToml()).toThrowError();
-    expect(processExitStub).toBeCalledTimes(1);
-    expect(consoleErrorStub).toBeCalledTimes(1);
+    expect(() => AppModule.withToml()).toThrow();
+    expect(processExitStub).toHaveBeenCalledTimes(1);
+    expect(consoleErrorStub).toHaveBeenCalledTimes(1);
   });
 
   it(`should be able to load toml config file`, async () => {

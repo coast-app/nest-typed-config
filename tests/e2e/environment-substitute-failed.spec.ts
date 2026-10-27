@@ -6,7 +6,7 @@ describe('Environment variable substitutions failure', () => {
       AppModule.withYamlSubstitution({
         ignoreEnvironmentVariableSubstitution: false,
       }),
-    ).toThrowError(
+    ).toThrow(
       `Environment variable is not set for variable name: 'TABLE_NAME'`,
     );
   });

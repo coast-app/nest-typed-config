@@ -39,7 +39,7 @@ describe('Local toml', () => {
    * this is a subject for discussion
    * */
   it(`should not be able load config when some of the loaders fail`, async () => {
-    expect(init(['reject', 'part1', 'part2'])).rejects.toThrowError();
+    expect(init(['reject', 'part1', 'part2'])).rejects.toThrow();
   });
 
   afterEach(async () => {

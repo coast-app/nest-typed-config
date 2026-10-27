@@ -15,6 +15,5 @@
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
-  "transformIgnorePatterns": ["<rootDir>/node_modules/(?!((.pnpm/)?@nestjs))"],
   "setupFiles": ["./tests/setup.ts"]
 }

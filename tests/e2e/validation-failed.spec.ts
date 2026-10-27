@@ -5,13 +5,13 @@ describe('Validation failed', () => {
   let app: INestApplication;
 
   it(`should not bootstrap when validation fails`, async () => {
-    expect(() => AppModule.withValidationFailed()).toThrowError(
+    expect(() => AppModule.withValidationFailed()).toThrow(
       'isAuthEnabled must be a boolean value',
     );
-    expect(() => AppModule.withValidationFailed()).toThrowError(
+    expect(() => AppModule.withValidationFailed()).toThrow(
       'name must be a string',
     );
-    expect(() => AppModule.withValidationFailed()).toThrowError(
+    expect(() => AppModule.withValidationFailed()).toThrow(
       'port must be an integer number',
     );
   });
