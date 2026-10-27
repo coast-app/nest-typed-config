@@ -16,8 +16,11 @@ jobs:
       - run: sudo corepack enable
       - run: pnpm install
       - run: pnpm build
-      - configure-npm-publish
-      - run: pnpm publish
+      - run:
+          name: Publish via npm trusted publishing
+          command: |
+            export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
+            pnpm publish
 workflows:
   build_and_publish:
     jobs:
@@ -36,10 +39,3 @@ workflows:
           filters:
             branches:
               only: main
-commands:
-  configure-npm-publish:
-    steps:
-      - run:
-          name: Setup NPM
-          command: |
-            npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
